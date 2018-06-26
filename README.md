@@ -19,4 +19,4 @@ Usage:
 
 In case that you want to pass parameters to the barcode reader, i.e. you know that your barcodes are always code-39 and you want more accurancy and less errors, you could use the second argument to the script in this way:
 
-./cut.sh example.pdf ""-Sdisable -Scode39.enable"
+./cut.sh example.pdf "-Sdisable -Scode39.enable"
