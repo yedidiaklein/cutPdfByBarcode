@@ -1,5 +1,6 @@
 # cutPdfByBarcode
 A shell script that uses Linux utilities to cut PDF that contains barcode in front of each part
+
 Use example.pdf file as input, and it will generate 4 pdfs, each of them start with the page with the barcode, and also filenames are the content of barcode.
 
 It supports these kinds of barcodes :
