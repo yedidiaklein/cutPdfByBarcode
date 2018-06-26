@@ -12,7 +12,7 @@
 #
 ##############################################################################################################
 
-if [ "$#" -ne 1 ]; then
+if [ "$#" -lt 1 ]; then
 	echo Usage: $0 pdf_file
 	exit 1
 fi
@@ -36,6 +36,8 @@ if [ $pages -lt 2 ]; then
 	exit 1
 fi
 
+extraparams=$2
+
 # first of all cut pdf to image per page in temp dir
 mkdir $$
 cp $pdf $$/in.pdf
@@ -51,9 +53,9 @@ for f in *.png
 do
 	echo checking file $f
 	# is there a barcode in file ?
-	zbarimg -q --raw $f >> /dev/null
+	zbarimg -q --raw $extraparams $f >> /dev/null
 	if [ $? -eq 0 ]; then
-		barcode=`zbarimg -q --raw $f`
+		barcode=`zbarimg -q --raw $extraparams $f  | sed ':a;N;$!ba;s/\n/_/g'`
 		let end=$counter-1
 		if [ $end -ne 0 ]; then #first page has barcode
 			pdftk in.pdf cat $start-$end output $oldbarcode.pdf

@@ -14,4 +14,9 @@ on Debian/Ububntu/Mint you could install them using the following command:
 sudo apt install pdftk zbar-tools poppler-utils
 
 Usage:
+
 ./cut.sh example.pdf
+
+In case that you want to pass parameters to the barcode reader, i.e. you know that your barcodes are always code-39 and you want more accurancy and less errors, you could use the second argument to the script in this way:
+
+./cut.sh example.pdf ""-Sdisable -Scode39.enable"
